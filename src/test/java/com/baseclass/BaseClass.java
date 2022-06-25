@@ -3,6 +3,7 @@ package com.baseclass;
 
 
 	import java.awt.AWTException;
+
 	import java.awt.Robot;
 	import java.awt.event.KeyEvent;
 	import java.io.File;
@@ -14,8 +15,9 @@ package com.baseclass;
 	import java.util.Date;
 	import java.util.List;
 	import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
-	import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FileUtils;
 	import org.apache.poi.ss.usermodel.Cell;
 	import org.apache.poi.ss.usermodel.CellType;
 	import org.apache.poi.ss.usermodel.DateUtil;
@@ -41,9 +43,13 @@ package com.baseclass;
 	public class BaseClass {
 		public static WebDriver driver;
 		
-		
-		private void implicitywait() {
+		public void iwait() {
+			driver.manage().timeouts().implicitlyWait(2000, TimeUnit.SECONDS);
+
 		}
+		
+		
+	
 		
 		public String getPropertyValue(String key) throws IOException {
 			Properties properties= new Properties();
